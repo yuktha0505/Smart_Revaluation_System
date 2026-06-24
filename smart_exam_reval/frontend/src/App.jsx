@@ -7,7 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 
 import LoadingSpinner from './components/LoadingSpinner';
 
-// Pages
+
 import Home from './pages/Home';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
@@ -18,6 +18,7 @@ import ResetPassword from './pages/ResetPassword';
 import DashboardLayout from './components/DashboardLayout';
 import RevalAssistantWidget from './components/RevalAssistantWidget';
 import PaymentPage from './pages/PaymentPage';
+import BackToTop from './components/Backtotop';
 
 // Dashboards (Lazy Loaded)
 const StudentDashboard = React.lazy(() => import('./pages/StudentDashboard'));
@@ -30,7 +31,7 @@ function App() {
     <AuthProvider>
       <ThemeProvider>
         <Router>
-          {/* Toast Container for global notifications */}
+      
           <Toaster
             position="top-right"
             toastOptions={{
@@ -39,11 +40,11 @@ function App() {
           />
 
           <RevalAssistantWidget />
-
+          <BackToTop/>
 
           <React.Suspense fallback={<div className="min-h-screen flex items-center justify-center bg-slate-50 dark:bg-slate-950"><LoadingSpinner /></div>}>
             <Routes>
-              {/* Public Routes */}
+    
               <Route path="/" element={<Home />} />
               <Route path="/login" element={<Login />} />
               <Route path="/signup" element={<Signup />} />
@@ -63,7 +64,7 @@ function App() {
                 }
               />
 
-              {/* Student Protected Routes */}
+     
               <Route
                 path="/student/dashboard"
                 element={
@@ -91,7 +92,7 @@ function App() {
                 }
               />
 
-              {/* Teacher Protected Routes */}
+
               <Route
                 path="/teacher/dashboard"
                 element={
@@ -103,7 +104,7 @@ function App() {
                 }
               />
 
-              {/* Admin Protected Routes */}
+ 
               <Route
                 path="/admin/dashboard"
                 element={
@@ -115,7 +116,6 @@ function App() {
                 }
               />
 
-              {/* Fallback for unknown routes */}
               <Route path="*" element={<Navigate to="/" replace />} />
             </Routes>
           </React.Suspense>
